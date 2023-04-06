@@ -9,11 +9,11 @@ namespace TaskSystem.Repositories.Interfaces
 
         Task<UserModel> FindById(int id);
 
-        Task<UserModel> create(UserModel user);
+        Task<UserModel> Create(UserModel user);
 
-        Task<UserModel> update(UserModel user);
+        Task<UserModel> Update(UserModel user, int id);
 
-        Task<bool> delete(int id);
+        Task<bool> Delete(int id);
 
     }
 }
