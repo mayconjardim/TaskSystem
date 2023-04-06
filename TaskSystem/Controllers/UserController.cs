@@ -38,7 +38,20 @@ namespace TaskSystem.Controllers
             return Ok(user);
         }
 
-     
+        [HttpPut("{id}")]
+        public async Task<ActionResult<UserModel>> Update([FromBody] UserModel userModel, int id)
+        {
+            userModel.Id = id;
+            UserModel user = await _userRepository.Update(userModel, id);
+            return Ok(user);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<UserModel>> Delete(int id)
+        {
+            bool deleted = await _userRepository.Delete(id);
+            return Ok(deleted);
+        }
 
     }
 }
