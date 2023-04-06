@@ -20,10 +20,8 @@ namespace TaskSystem.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UserModel>>> FindAllUsers()
         {
-          
             List<UserModel> users = await _userRepository.FindAllUsers();
             return Ok(users);
-
         }
 
         [HttpGet("{id}")]
@@ -32,6 +30,15 @@ namespace TaskSystem.Controllers
             UserModel user = await _userRepository.FindById(id);
             return Ok(user);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<UserModel>> Create([FromBody] UserModel userModel)
+        {
+            UserModel user = await _userRepository.Create(userModel);
+            return Ok(user);
+        }
+
+     
 
     }
 }
