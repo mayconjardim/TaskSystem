@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskSystem.Models;
+using TaskSystem.Repositories.Interfaces;
 
 namespace TaskSystem.Controllers
 {
@@ -9,10 +10,20 @@ namespace TaskSystem.Controllers
     public class UserController : ControllerBase
     {
 
-        [HttpGet]
-        public ActionResult<List<UserModel>> findAllUsers()
+        private readonly IUserRepository _userRepository;
+
+        public UserController(IUserRepository userRepository)
         {
-            return Ok();
+            _userRepository = userRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<UserModel>>> findAllUsers()
+        {
+          
+            List<UserModel> users = await _userRepository.FindAllUsers();
+            return Ok(users);
+
         }
 
     }
