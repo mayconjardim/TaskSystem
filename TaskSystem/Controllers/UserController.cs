@@ -18,12 +18,19 @@ namespace TaskSystem.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<UserModel>>> findAllUsers()
+        public async Task<ActionResult<List<UserModel>>> FindAllUsers()
         {
           
             List<UserModel> users = await _userRepository.FindAllUsers();
             return Ok(users);
 
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserModel>> FindById(int id)
+        {
+            UserModel user = await _userRepository.FindById(id);
+            return Ok(user);
         }
 
     }
