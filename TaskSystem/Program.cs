@@ -18,10 +18,10 @@ namespace TaskSystem
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-           builder.Services.AddEntityFrameworkSqlServer()
-                .AddDbContext<TaskSystemDBContext>(
-                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
-               );
+               builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<TaskSystemDBContext>(options => options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("Database")));
+
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
 
