@@ -1,0 +1,19 @@
+﻿using TaskSystem.Models;
+
+namespace TaskSystem.Repositories.Interfaces
+{
+    public interface ITaskRepository
+    {
+
+        Task<List<TaskModel>> FindAllUsers();
+
+        Task<TaskModel> FindById(int id);
+
+        Task<TaskModel> Create(TaskModel task);
+
+        Task<TaskModel> Update(TaskModel task, int id);
+
+        Task<bool> Delete(int id);
+
+    }
+}
