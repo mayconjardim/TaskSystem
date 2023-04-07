@@ -15,7 +15,7 @@ namespace TaskSystem.Repositories
             _dbContext = taskSystemDBContext;
         }
 
-        public async Task<List<TaskModel>> FindAllUsers()
+        public async Task<List<TaskModel>> FindAllTasks()
         {
             return await _dbContext.Tasks.ToListAsync();
 

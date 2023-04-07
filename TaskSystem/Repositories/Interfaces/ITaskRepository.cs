@@ -5,7 +5,7 @@ namespace TaskSystem.Repositories.Interfaces
     public interface ITaskRepository
     {
 
-        Task<List<TaskModel>> FindAllUsers();
+        Task<List<TaskModel>> FindAllTasks();
 
         Task<TaskModel> FindById(int id);
 
