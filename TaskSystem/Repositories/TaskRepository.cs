@@ -17,13 +17,17 @@ namespace TaskSystem.Repositories
 
         public async Task<List<TaskModel>> FindAllTasks()
         {
-            return await _dbContext.Tasks.ToListAsync();
+            return await _dbContext.Tasks
+                .Include(x => x.User)
+                .ToListAsync();
 
         }
 
         public async Task<TaskModel> FindById(int id)
         {
-           return await _dbContext.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+           return await _dbContext.Tasks
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<TaskModel> Create(TaskModel task)
